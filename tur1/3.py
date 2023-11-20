@@ -13,14 +13,11 @@ def find_longest_route(to_flight, start):
         visit.add(sity)
 
         if len(route) > len(mx_route) or (len(route) == len(mx_route) and time > mx_time):
-            mx_route = route
-            mx_time = time
+            mx_route, mx_time = route, time
 
-        for flight in to_flight.get(sity, []):
-            nasnach, time = flight
+        for nasnach, flight_time in to_flight.get(sity, []):
             if nasnach not in visit:
-                new_route = route + [nasnach]
-                new_time = time + time
+                new_route, new_time = route + [nasnach], time + flight_time
                 queue.append((nasnach, new_route, new_time))
 
     return mx_route, mx_time
@@ -32,19 +29,14 @@ flights = {}
 for _ in range(N):
     departure, arrival, time = input().split('|')
     time = int(time)
-    if departure not in flights:
-        flights[departure] = []
-    flights[departure].append((arrival, time))
+    flights.setdefault(departure, []).append((arrival, time))
 
-max_route = []
-max_time = 0
+max_route, max_time = [], 0
 
-for city in flights.keys():
+for city in flights:
     current_route, current_time = find_longest_route(flights, city)
     if len(current_route) > len(max_route) or (len(current_route) == len(max_route) and current_time > max_time):
-        max_route = current_route
-        max_time = current_time
+        max_route, max_time = current_route, current_time
 
-# Вывод маршрута и времени
 print('|'.join(max_route))
 print(max_time)
