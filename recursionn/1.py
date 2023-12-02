@@ -1,9 +1,23 @@
-def f(n):
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    return f(n - 1) + f(n - 2)
+def f(n, dp):
+    if dp[n] == -1:
+        dp[n] = f(n - 1, dp) + f(n - 2, dp)
+    return dp[n]
 
 
-print(f(int(input())))
+n = int(input())
+dp = [-1 for _ in range(n)]
+dp[0] = 0
+dp[1] = 1
+print(f(n - 1, dp))
+a = 0
+a1 = 1
+for i in range(2, n):
+    a, a1 = a1, a + a1
+print(a1)
+
+dp1 = [-1 for _ in range(n)]
+dp1[0] = 0
+dp1[1] = 1
+for i in range(2, n):
+    dp1[i] = dp1[i - 1] + dp1[i - 2]
+print(dp1[-1])
