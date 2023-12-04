@@ -34,3 +34,20 @@ for i in range(1, m):
         k = matrix[i][j]
         check1[i][j] = max(check1[i - 1][j] + k, check1[i][j - 1] + k)
 print(check1[m - 1][n - 1])
+# version 1
+check1 = [0] * n
+for i in range(m):
+    temp = [0] * n
+    temp[0] = matrix[i][0]
+    for j in range(1, n):
+        temp[j] = max(check1[j], temp[j - 1]) + matrix[i][j]
+    check1 = temp
+print(check1[n - 1])
+
+# version 2
+check1 = [0] * n
+for i in range(m):
+    check1[0] = matrix[i][0]
+    for j in range(1, n):
+        check1[j] = max(check1[j], check1[j - 1]) + matrix[i][j]
+print(check1[n - 1])
