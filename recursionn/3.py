@@ -17,7 +17,7 @@ def f(m, n):
 
 
 m, n = map(int, input().split(" "))
-matrix = defines.creat_matrix(m, n)
+matrix = defines.creat_matrix_abs(m, n)
 check = [[0 for _ in range(n)] for s in range(m)]
 # for elem in matrix:
 #     print(*elem)
