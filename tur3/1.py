@@ -24,7 +24,6 @@ for i in range(len(n)):
     elif i == len(n) - 1:
         elem = n[i - 1] + n[i]
         alf_arr_numbers.append(find_elem(elem))
-
 ans = f'{alf_arr_numbers[0]}'
 for i in range(1, len(alf_arr_numbers)):
     ans += arr_znk[i - 1] + str(alf_arr_numbers[i])
