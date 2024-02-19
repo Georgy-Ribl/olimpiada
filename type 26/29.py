@@ -1,17 +1,17 @@
-with open(r'files/26.txt') as f:
+with open(r'files/29.txt') as f:
     n, m = map(int, f.readline().split(' '))
     arr = []
     for i in range(n):
         price, tp = f.readline().strip().split()
         arr.append([int(price), tp])
     arr.sort()
-    count_a = 0
+    count_b = 0
     last_index = 0
     for i in range(len(arr)):
         price, tp = arr[i]
         if m - price >= 0:
             if tp == 'B':
-                count_a += 1
+                count_b += 1
             m -= price
         else:
             last_index = i
@@ -25,9 +25,9 @@ with open(r'files/26.txt') as f:
                     break
             else:
                 break
-            if m - arr[last_index][0] >= 0:
-                count_a += 1
-                m = m - arr[last_index][0]
+            if m - price + price_2 >= 0:
+                count_b += 1
+                m = m - price + price_2
             else:
                 break
-    print(count_a, m)
+    print(count_b, m)

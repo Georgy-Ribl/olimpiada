@@ -34,9 +34,9 @@ with open(r'files/28.txt') as f:
                     break
             else:  # не нашли B
                 break
-            if m - tp + arr[last_index] >= 0:  # проверяем, можно ли продать этот В и купить новый модный А
+            if m - m - price + price_2 >= 0:  # проверяем, можно ли продать этот В и купить новый модный А
                 count_a += 1  # ура, на 1 А теперь больше
-                m = m - tp + arr[last_index]  # продаем, покупаем
+                m = m - m - price + price_2  # продаем, покупаем
             else:
                 break  # игры кончились
     print(count_a, m)  # ответ
