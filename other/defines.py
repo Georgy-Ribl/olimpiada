@@ -15,3 +15,17 @@ def creat_matrix_not_abs(a: int, b: int) -> list[list]:
         for j in range(b):
             matrix[i][j] = random.randint(-10, 10)
     return matrix
+
+
+def conv(n: str, ri: int, ro: int) -> str:
+    digs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    acc: int = 0
+    for a in n:
+        kl = digs.find(a)
+        acc = acc * ri + kl
+    res = ""
+    while (acc > 0):
+        kl = acc % ro
+        res = digs[kl] + res
+        acc = acc // ro
+    return res

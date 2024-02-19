@@ -14,31 +14,29 @@ with open(r'files/28.txt') as f:
         price, tp = f.readline().strip().split()
         arr.append([int(price), tp])
     arr.sort()
-    count_a, shopping_cart = 0, []
+    count_a = 0
+    last_index = 0  # указывает на индекс последнего взятого элемента + 1
     for i in range(len(arr)):
         price, tp = arr[i]
-        sm = sum(elem[0] for elem in shopping_cart)
-        if m - sm - price >= 0:
+        if m - price >= 0:
             if tp == 'A':
                 count_a += 1
-            shopping_cart.append([price, tp])
+            m -= price
+        else:
             last_index = i
-    shopping_cart.reverse()
-    for price, tp in shopping_cart:
-        if tp == 'B':
-            tst = [price, tp]
-            shopping_cart.remove(tst)
-            sm = sum(elem[0] for elem in shopping_cart)
-            for i in range(last_index, len(arr)):
-                price, tp = arr[i]
-                if tp == 'A' and m - sm - price >= 0:
-                    count_a += 1
-                    shopping_cart.append([price, tp])
-                else:
-                    shopping_cart.append(tst)
-                    break
-                last_index = i
-            else:
-                continue
             break
-    print(count_a, m - sm)
+    for i in range(last_index, len(arr)):  # перебираем все элементы, которые не вошли в изначальный набор
+        price, tp = arr[i]
+        if tp == "A":  # новый элемент это А
+            for last_index in range(last_index - 1, -1, -1):  # перебираем элементы из начального набора в поисках В
+                price_2, tp_2 = arr[last_index]
+                if tp_2 == "B":  # нашли В
+                    break
+            else:  # не нашли B
+                break
+            if m - tp + arr[last_index] >= 0:  # проверяем, можно ли продать этот В и купить новый модный А
+                count_a += 1  # ура, на 1 А теперь больше
+                m = m - tp + arr[last_index]  # продаем, покупаем
+            else:
+                break  # игры кончились
+    print(count_a, m)  # ответ
