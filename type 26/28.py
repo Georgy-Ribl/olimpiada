@@ -5,7 +5,7 @@
 120 A
 120 A
 120 A
-10 B
+Variant 10 B
 '''
 with open(r'files/28.txt') as f:
     n, m = map(int, f.readline().split(' '))

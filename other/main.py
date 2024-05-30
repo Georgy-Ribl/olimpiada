@@ -1,18 +1,11 @@
-from functools import lru_cache
-
-
-@lru_cache()
-def F(x, p):
-    if 36 <= x and x <= 60 or p > 3:
-        return p == 3
-    if x > 60:
-        return p % 2 == 1
-
-    if p % 2 == 0:
-        return F(x + 1, p + 1) and F(x * 2, p + 1) and F(x * 3, p + 1)
-    else:
-        return F(x + 1, p + 1) or F(x * 2, p + 1) or F(x * 3, p + 1)
-
-# for i in range(1, 36):
-#     if F(i, 1):
-#         print(i)
+ipadr = '154.63.206.129'.split('.')
+maska = '154.63.100.75'.split('.')
+# maska = '255.255.128.0'.split('.')
+ipadr = [int(s) for s in ipadr]
+maska = [int(s) for s in maska]
+# print(bin(200))
+print(str(bin(maska[0] & ipadr[0]) + "." + bin(maska[1] & ipadr[1]) + '.' + bin(maska[2] & ipadr[2]) + '.' + bin(
+    maska[3] & ipadr[3])).replace("0b", ""))
+print([bin(s).replace('0b', '') for s in ipadr])
+print([bin(s).replace('0b', '') for s in maska])
+print(2 ** 15)

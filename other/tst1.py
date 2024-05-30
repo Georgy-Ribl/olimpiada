@@ -14,8 +14,11 @@ def conv(n: str, ri: int, ro: int) -> str:
         acc = acc // ro
     return res
 
-n = conv(str(8**740-2**900+7), 10, 2)
+
+n = conv(str(8 ** 740 - 2 ** 900 + 7), 10, 2)
 print(n.count('0'))
+
+
 def rotate(matrix, k):
     # k столб -> k строка
     # k строка -> N - 1 - k столбец
@@ -32,7 +35,7 @@ def rotate(matrix, k):
         matrix[k][i] = tmp  # k столб -> k строка
 
 #
-# matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+# matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, Variant 10, 11, 12], [13, 14, 15, 16]]
 # print(*matrix, sep="\n")
 # print()
 # rotate(matrix, 2)
@@ -42,7 +45,7 @@ def rotate(matrix, k):
 #
 #
 #
-# matrix = [[0] * 10 for i in range(10)]
+# matrix = [[0] * Variant 10 for i in range(Variant 10)]
 # print(*matrix, sep = '\n')
 # matrix[0][0] = 1
 # print()
@@ -62,7 +65,7 @@ def rotate(matrix, k):
 #
 # matrix1 = matrix.copy()
 # matrix[0][0] = 15
-# matrix.append([1] * 10)
+# matrix.append([1] * Variant 10)
 # print()
 # print()
 # print(*matrix1, sep = '\n')
@@ -111,6 +114,6 @@ def rotate(matrix, k):
 #         task_per_symb.append(symbols_of_keyWord)
 # answer = ""
 # for elem in task_per_symb:
-#     answer += letters[int(conv(elem, sys, 10)) - 1]
+#     answer += letters[int(conv(elem, sys, Variant 10)) - 1]
 #
 # print(answer.upper())
